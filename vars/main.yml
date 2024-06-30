@@ -1,9 +1,4 @@
 ---
-host_config:
-  # Choose OS version you want to deploy (Debian (10, 11 or 12), Ubuntu (24.04) or Rocky (8 or 9))
-  os: "debian"
-  version: 12
-
 # SNMP configuration
 snmp_config:
   configure: yes # Can be yes or no (bolean)
