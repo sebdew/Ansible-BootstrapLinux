@@ -1,0 +1,9 @@
+# File and folder default location
+locations:
+  working_folder: "/tmp"
+  ansible_public_key: "~/.ssh/id_rsa.pub"
+
+# Python is needed for ansible to work correctly, please provide package name and path
+python:
+  pkg_name: python3
+  path: /usr/bin/python3

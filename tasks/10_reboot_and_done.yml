@@ -2,6 +2,7 @@
 - name: Reboot machine and send a message
   reboot:
     msg: "Rebooting machine in 5 seconds"
+  delegate_to: localhost
 
 - name: Wait for VM rebooting
   wait_for:
@@ -9,7 +10,9 @@
     port: 22
     delay: 60
     state: present
+  delegate_to: localhost
 
 - name: Display end message
   debug:
     msg: Machine bootstrapped with success !
+  delegate_to: localhost

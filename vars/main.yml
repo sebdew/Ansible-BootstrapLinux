@@ -4,30 +4,6 @@ host_config:
   os: "debian"
   version: 12
 
-  # Enter hostname and domain name for your VM
-  hostname: vm-test
-  domain: dewarlez.fr
-
-  # Provide root default password
-  root_password: viergee
-  
-  # Hardware specs
-  hw:
-    start_at_boot: true
-    memory: 4096
-    cores: 2
-    hdd_size: 50G
-    hdd_storage_location: local-vm
-
-  # Network specs
-  network:
-    bridge: vmbr0
-    vlan: 301
-    ip: 192.168.4.10
-    cidr: 25
-    gw: 192.168.4.1
-    dns_ip: 192.168.2.134
-
 # SNMP configuration
 snmp_config:
   configure: yes # Can be yes or no (bolean)
@@ -111,25 +87,3 @@ security_config:
   conf_location: /etc/ssh/sshd_config
   service_name: sshd
   backup_config: yes # Can be yes or no (bolean)
-
-# File and folder default location
-locations:
-  working_folder: "/tmp"
-  ansible_public_key: "~/.ssh/id_rsa.pub"
-
-# Python is needed for ansible to work correctly, please provide package name and path
-python:
-  pkg_name: python3
-  path: /usr/bin/python3
-
-# Cloud-Init image location
-qcow2_images:
-  debian:
-    12: "https://cloud.debian.org/images/cloud/bookworm/latest/debian-12-genericcloud-amd64.qcow2"
-    11: "https://cloud.debian.org/images/cloud/bullseye/latest/debian-11-genericcloud-amd64.qcow2"
-    10: "https://cloud.debian.org/images/cloud/buster/latest/debian-10-genericcloud-amd64.qcow2"
-  ubuntu:
-    24.04: "http://cloud-images.ubuntu.com/releases/noble/release/ubuntu-24.04-server-cloudimg-amd64.img"
-  rocky:
-    9: "http://dl.rockylinux.org/pub/rocky/9/images/x86_64/Rocky-9-GenericCloud-Base.latest.x86_64.qcow2"
-    8: "http://dl.rockylinux.org/pub/rocky/8/images/x86_64/Rocky-8-GenericCloud-Base.latest.x86_64.qcow2"
