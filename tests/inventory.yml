@@ -1,0 +1,7 @@
+---
+all:
+  hosts:
+    vm-test:
+      ansible_host: 192.168.4.10
+      ansible_connection: ssh
+      ansible_user: root

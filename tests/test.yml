@@ -1,0 +1,8 @@
+---
+- name: BootstrapLinux
+  hosts: all
+
+  tasks:
+  - name: Bootstrap Linux
+    include_role:
+      name: Ansible-BootstrapLinux

@@ -1,0 +1,42 @@
+---
+- name: Working from infos
+  debug:
+    msg: "Working from {{ inventory_hostname }}: {{ ansible_distribution }} {{ ansible_distribution_major_version }} ({{ ansible_distribution_version }})"
+
+- name: Setup programs
+  include_tasks: "01_setup_programs.yml"
+
+- name: Configure SNMP
+  include_tasks: "02_configure_snmp.yml"
+  when: snmp_config['configure']
+
+- name: Configure QEMU Agent
+  include_tasks: "03_configure_qemu_agent.yml"
+  when: qemu_agent_config['configure']
+
+- name: Configure NTP Client
+  include_tasks: "04_configure_ntp_client.yml"
+  when: ntp_config['configure']
+
+- name: Customize Bashrc
+  include_tasks: "05_customize_bashrc.yml"
+  when: bash_config['configure']
+
+- name: Configure Syslog
+  include_tasks: "06_configure_syslog.yml"
+  when: syslog_config['configure']
+
+- name: Configure SMTP
+  include_tasks: "07_configure_smtp.yml"
+  when: smtp_config['configure']
+
+- name: Create users
+  include_tasks: "08_create_users.yml"
+  when: users_config['configure']
+
+- name: Improve server security
+  include_tasks: "09_disable_ssh_root_access.yml"
+  when: security_config['configure']
+
+- name: Reboot and done
+  include_tasks: "10_reboot_and_done.yml"
