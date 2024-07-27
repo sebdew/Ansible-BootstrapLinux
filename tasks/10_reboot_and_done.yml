@@ -6,7 +6,7 @@
 
 - name: Wait for VM rebooting
   wait_for:
-    host: "{{ host_config['network']['ip'] }}"
+    host: "{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}"
     port: 22
     delay: 60
     state: present

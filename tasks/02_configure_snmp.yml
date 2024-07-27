@@ -3,7 +3,7 @@
   lineinfile: 
     path: "{{ snmp_config['conf_location'] }}"
     regexp: "^agentaddress(.*)$"
-    line: "agentaddress {{ host_config['network']['ip'] }},127.0.0.1,[::1]"
+    line: "agentaddress {{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }},127.0.0.1,[::1]"
     backrefs: yes
     backup: "{{ snmp_config['backup_config'] }}"
 

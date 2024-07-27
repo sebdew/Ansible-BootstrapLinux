@@ -5,19 +5,19 @@
 
 - name: Remove other NTP server
   lineinfile:
-    path: "{{ ntp_config['conf_location'][host_config['os']] }}"
+    path: "{{ ntp_config['conf_location'][ansible_distribution | lower] }}"
     state: absent
     regexp: "^pool(.*)$"
     backup: "{{ ntp_config['backup_config'] }}"
 
 - name: Set NTP server
   lineinfile: 
-    path: "{{ ntp_config['conf_location'][host_config['os']] }}"
+    path: "{{ ntp_config['conf_location'][ansible_distribution | lower] }}"
     line: "pool {{ ntp_config['server'] }}"
     backup: "{{ ntp_config['backup_config'] }}"
 
 - name: Restart and activate NTP service
   service:
-    name: "{{ ntp_config['service_name'][host_config['os']] }}"
+    name: "{{ ntp_config['service_name'][ansible_distribution | lower] }}"
     state: restarted
     enabled: yes
