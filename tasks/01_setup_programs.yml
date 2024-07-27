@@ -30,7 +30,7 @@
     - ntp
     - rsyslog
     - figlet
-  when: ansible_distribution == "debian" or ansible_distribution == "ubuntu"
+  when: ansible_distribution | lower == "debian" or ansible_distribution | lower == "ubuntu"
 
 - name: Now, setup wanted apps with Dnf
   apt:
@@ -52,4 +52,4 @@
     - ntp
     - rsyslog
     - figlet
-  when: ansible_distribution == "rocky"
+  when: ansible_distribution | lower == "rocky"
