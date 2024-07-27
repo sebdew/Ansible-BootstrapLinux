@@ -2,7 +2,6 @@
 - name: Reboot machine and send a message
   reboot:
     msg: "Rebooting machine in 5 seconds"
-  delegate_to: localhost
 
 - name: Wait for VM rebooting
   wait_for:
